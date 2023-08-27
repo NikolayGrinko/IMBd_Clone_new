@@ -13,6 +13,17 @@
 		20DF74052A9A93360091C2A7 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DF74032A9A93360091C2A7 /* Main.storyboard */; };
 		20DF74072A9A93380091C2A7 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 20DF74062A9A93380091C2A7 /* Assets.xcassets */; };
 		20DF740A2A9A93380091C2A7 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 20DF74082A9A93380091C2A7 /* LaunchScreen.storyboard */; };
+		20DF74122A9A94170091C2A7 /* TabBarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74112A9A94170091C2A7 /* TabBarViewController.swift */; };
+		20DF74142A9A94570091C2A7 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74132A9A94570091C2A7 /* HomeViewController.swift */; };
+		20DF74162A9A947B0091C2A7 /* SearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74152A9A947B0091C2A7 /* SearchViewController.swift */; };
+		20DF74182A9A94DD0091C2A7 /* TitleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74172A9A94DD0091C2A7 /* TitleTableViewCell.swift */; };
+		20DF741A2A9A953D0091C2A7 /* SearchResultsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74192A9A953D0091C2A7 /* SearchResultsViewController.swift */; };
+		20DF741C2A9A99A60091C2A7 /* CollectionViewTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF741B2A9A99A60091C2A7 /* CollectionViewTableViewCell.swift */; };
+		20DF741E2A9A9BB90091C2A7 /* HeroHeaderUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF741D2A9A9BB90091C2A7 /* HeroHeaderUIView.swift */; };
+		20DF74202A9A9CA30091C2A7 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF741F2A9A9CA30091C2A7 /* Extensions.swift */; };
+		20DF74222A9A9D960091C2A7 /* TitlePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74212A9A9D960091C2A7 /* TitlePreviewViewModel.swift */; };
+		20DF74242A9A9E130091C2A7 /* TitlePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74232A9A9E130091C2A7 /* TitlePreviewViewController.swift */; };
+		20DF742C2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF742B2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +35,17 @@
 		20DF74062A9A93380091C2A7 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		20DF74092A9A93380091C2A7 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		20DF740B2A9A93380091C2A7 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		20DF74112A9A94170091C2A7 /* TabBarViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarViewController.swift; sourceTree = "<group>"; };
+		20DF74132A9A94570091C2A7 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		20DF74152A9A947B0091C2A7 /* SearchViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchViewController.swift; sourceTree = "<group>"; };
+		20DF74172A9A94DD0091C2A7 /* TitleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleTableViewCell.swift; sourceTree = "<group>"; };
+		20DF74192A9A953D0091C2A7 /* SearchResultsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResultsViewController.swift; sourceTree = "<group>"; };
+		20DF741B2A9A99A60091C2A7 /* CollectionViewTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CollectionViewTableViewCell.swift; sourceTree = "<group>"; };
+		20DF741D2A9A9BB90091C2A7 /* HeroHeaderUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeroHeaderUIView.swift; sourceTree = "<group>"; };
+		20DF741F2A9A9CA30091C2A7 /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		20DF74212A9A9D960091C2A7 /* TitlePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewModel.swift; sourceTree = "<group>"; };
+		20DF74232A9A9E130091C2A7 /* TitlePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewController.swift; sourceTree = "<group>"; };
+		20DF742B2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +78,74 @@
 		20DF73FC2A9A93360091C2A7 /* IMBD_Clone_new */ = {
 			isa = PBXGroup;
 			children = (
+				20DF742A2A9AA1980091C2A7 /* UIView */,
+				20DF74292A9AA1830091C2A7 /* TableViewCell */,
+				20DF74282A9AA1440091C2A7 /* Model */,
+				20DF74272A9AA11B0091C2A7 /* TabBarViewController */,
+				20DF74262A9AA0EA0091C2A7 /* Extension */,
+				20DF74252A9AA0BD0091C2A7 /* ViewController */,
+				20DF74032A9A93360091C2A7 /* Main.storyboard */,
 				20DF73FD2A9A93360091C2A7 /* AppDelegate.swift */,
 				20DF73FF2A9A93360091C2A7 /* SceneDelegate.swift */,
-				20DF74012A9A93360091C2A7 /* ViewController.swift */,
-				20DF74032A9A93360091C2A7 /* Main.storyboard */,
 				20DF74062A9A93380091C2A7 /* Assets.xcassets */,
 				20DF74082A9A93380091C2A7 /* LaunchScreen.storyboard */,
 				20DF740B2A9A93380091C2A7 /* Info.plist */,
 			);
 			path = IMBD_Clone_new;
+			sourceTree = "<group>";
+		};
+		20DF74252A9AA0BD0091C2A7 /* ViewController */ = {
+			isa = PBXGroup;
+			children = (
+				20DF74132A9A94570091C2A7 /* HomeViewController.swift */,
+				20DF74152A9A947B0091C2A7 /* SearchViewController.swift */,
+				20DF74192A9A953D0091C2A7 /* SearchResultsViewController.swift */,
+				20DF74012A9A93360091C2A7 /* ViewController.swift */,
+				20DF74232A9A9E130091C2A7 /* TitlePreviewViewController.swift */,
+			);
+			path = ViewController;
+			sourceTree = "<group>";
+		};
+		20DF74262A9AA0EA0091C2A7 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				20DF741F2A9A9CA30091C2A7 /* Extensions.swift */,
+			);
+			path = Extension;
+			sourceTree = "<group>";
+		};
+		20DF74272A9AA11B0091C2A7 /* TabBarViewController */ = {
+			isa = PBXGroup;
+			children = (
+				20DF74112A9A94170091C2A7 /* TabBarViewController.swift */,
+			);
+			path = TabBarViewController;
+			sourceTree = "<group>";
+		};
+		20DF74282A9AA1440091C2A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				20DF74212A9A9D960091C2A7 /* TitlePreviewViewModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		20DF74292A9AA1830091C2A7 /* TableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				20DF741B2A9A99A60091C2A7 /* CollectionViewTableViewCell.swift */,
+				20DF74172A9A94DD0091C2A7 /* TitleTableViewCell.swift */,
+				20DF742B2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift */,
+			);
+			path = TableViewCell;
+			sourceTree = "<group>";
+		};
+		20DF742A2A9AA1980091C2A7 /* UIView */ = {
+			isa = PBXGroup;
+			children = (
+				20DF741D2A9A9BB90091C2A7 /* HeroHeaderUIView.swift */,
+			);
+			path = UIView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -138,8 +219,19 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DF74182A9A94DD0091C2A7 /* TitleTableViewCell.swift in Sources */,
+				20DF741E2A9A9BB90091C2A7 /* HeroHeaderUIView.swift in Sources */,
+				20DF741A2A9A953D0091C2A7 /* SearchResultsViewController.swift in Sources */,
+				20DF74162A9A947B0091C2A7 /* SearchViewController.swift in Sources */,
+				20DF74142A9A94570091C2A7 /* HomeViewController.swift in Sources */,
+				20DF74122A9A94170091C2A7 /* TabBarViewController.swift in Sources */,
+				20DF74222A9A9D960091C2A7 /* TitlePreviewViewModel.swift in Sources */,
+				20DF742C2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift in Sources */,
+				20DF741C2A9A99A60091C2A7 /* CollectionViewTableViewCell.swift in Sources */,
 				20DF74022A9A93360091C2A7 /* ViewController.swift in Sources */,
+				20DF74242A9A9E130091C2A7 /* TitlePreviewViewController.swift in Sources */,
 				20DF73FE2A9A93360091C2A7 /* AppDelegate.swift in Sources */,
+				20DF74202A9A9CA30091C2A7 /* Extensions.swift in Sources */,
 				20DF74002A9A93360091C2A7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
