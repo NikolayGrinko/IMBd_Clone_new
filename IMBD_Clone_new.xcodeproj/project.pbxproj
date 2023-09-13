@@ -24,6 +24,11 @@
 		20DF74222A9A9D960091C2A7 /* TitlePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74212A9A9D960091C2A7 /* TitlePreviewViewModel.swift */; };
 		20DF74242A9A9E130091C2A7 /* TitlePreviewViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74232A9A9E130091C2A7 /* TitlePreviewViewController.swift */; };
 		20DF742C2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF742B2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift */; };
+		20DF744F2AA1C2730091C2A7 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF744E2AA1C2730091C2A7 /* APICaller.swift */; };
+		20DF74772AA493570091C2A7 /* Title.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74762AA493570091C2A7 /* Title.swift */; };
+		20DF74792AA4957E0091C2A7 /* TitleViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF74782AA4957E0091C2A7 /* TitleViewModel.swift */; };
+		20DF747C2AA64E4C0091C2A7 /* SDWebImage in Frameworks */ = {isa = PBXBuildFile; productRef = 20DF747B2AA64E4C0091C2A7 /* SDWebImage */; };
+		20DF75272AB1887C0091C2A7 /* YoutubeSearchResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 20DF75262AB1887C0091C2A7 /* YoutubeSearchResponse.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -46,6 +51,10 @@
 		20DF74212A9A9D960091C2A7 /* TitlePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewModel.swift; sourceTree = "<group>"; };
 		20DF74232A9A9E130091C2A7 /* TitlePreviewViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitlePreviewViewController.swift; sourceTree = "<group>"; };
 		20DF742B2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleCollectionViewCell.swift; sourceTree = "<group>"; };
+		20DF744E2AA1C2730091C2A7 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
+		20DF74762AA493570091C2A7 /* Title.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Title.swift; sourceTree = "<group>"; };
+		20DF74782AA4957E0091C2A7 /* TitleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleViewModel.swift; sourceTree = "<group>"; };
+		20DF75262AB1887C0091C2A7 /* YoutubeSearchResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = YoutubeSearchResponse.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +62,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				20DF747C2AA64E4C0091C2A7 /* SDWebImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,9 +88,11 @@
 		20DF73FC2A9A93360091C2A7 /* IMBD_Clone_new */ = {
 			isa = PBXGroup;
 			children = (
+				20DF74752AA493400091C2A7 /* Model */,
+				20DF744D2AA1C2510091C2A7 /* Manager */,
 				20DF742A2A9AA1980091C2A7 /* UIView */,
 				20DF74292A9AA1830091C2A7 /* TableViewCell */,
-				20DF74282A9AA1440091C2A7 /* Model */,
+				20DF74282A9AA1440091C2A7 /* ViewModel */,
 				20DF74272A9AA11B0091C2A7 /* TabBarViewController */,
 				20DF74262A9AA0EA0091C2A7 /* Extension */,
 				20DF74252A9AA0BD0091C2A7 /* ViewController */,
@@ -122,12 +134,13 @@
 			path = TabBarViewController;
 			sourceTree = "<group>";
 		};
-		20DF74282A9AA1440091C2A7 /* Model */ = {
+		20DF74282A9AA1440091C2A7 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
 				20DF74212A9A9D960091C2A7 /* TitlePreviewViewModel.swift */,
+				20DF74782AA4957E0091C2A7 /* TitleViewModel.swift */,
 			);
-			path = Model;
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		20DF74292A9AA1830091C2A7 /* TableViewCell */ = {
@@ -148,6 +161,23 @@
 			path = UIView;
 			sourceTree = "<group>";
 		};
+		20DF744D2AA1C2510091C2A7 /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				20DF744E2AA1C2730091C2A7 /* APICaller.swift */,
+			);
+			path = Manager;
+			sourceTree = "<group>";
+		};
+		20DF74752AA493400091C2A7 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				20DF74762AA493570091C2A7 /* Title.swift */,
+				20DF75262AB1887C0091C2A7 /* YoutubeSearchResponse.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -164,6 +194,9 @@
 			dependencies = (
 			);
 			name = IMBD_Clone_new;
+			packageProductDependencies = (
+				20DF747B2AA64E4C0091C2A7 /* SDWebImage */,
+			);
 			productName = IMBD_Clone_new;
 			productReference = 20DF73FA2A9A93360091C2A7 /* IMBD_Clone_new.app */;
 			productType = "com.apple.product-type.application";
@@ -192,6 +225,9 @@
 				Base,
 			);
 			mainGroup = 20DF73F12A9A93360091C2A7;
+			packageReferences = (
+				20DF747A2AA64E4C0091C2A7 /* XCRemoteSwiftPackageReference "SDWebImage" */,
+			);
 			productRefGroup = 20DF73FB2A9A93360091C2A7 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -227,11 +263,15 @@
 				20DF74122A9A94170091C2A7 /* TabBarViewController.swift in Sources */,
 				20DF74222A9A9D960091C2A7 /* TitlePreviewViewModel.swift in Sources */,
 				20DF742C2A9AA6F10091C2A7 /* TitleCollectionViewCell.swift in Sources */,
+				20DF74772AA493570091C2A7 /* Title.swift in Sources */,
+				20DF74792AA4957E0091C2A7 /* TitleViewModel.swift in Sources */,
 				20DF741C2A9A99A60091C2A7 /* CollectionViewTableViewCell.swift in Sources */,
 				20DF74022A9A93360091C2A7 /* ViewController.swift in Sources */,
+				20DF75272AB1887C0091C2A7 /* YoutubeSearchResponse.swift in Sources */,
 				20DF74242A9A9E130091C2A7 /* TitlePreviewViewController.swift in Sources */,
 				20DF73FE2A9A93360091C2A7 /* AppDelegate.swift in Sources */,
 				20DF74202A9A9CA30091C2A7 /* Extensions.swift in Sources */,
+				20DF744F2AA1C2730091C2A7 /* APICaller.swift in Sources */,
 				20DF74002A9A93360091C2A7 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -450,6 +490,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		20DF747A2AA64E4C0091C2A7 /* XCRemoteSwiftPackageReference "SDWebImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/grinya37/SDWebImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		20DF747B2AA64E4C0091C2A7 /* SDWebImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 20DF747A2AA64E4C0091C2A7 /* XCRemoteSwiftPackageReference "SDWebImage" */;
+			productName = SDWebImage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 20DF73F22A9A93360091C2A7 /* Project object */;
 }

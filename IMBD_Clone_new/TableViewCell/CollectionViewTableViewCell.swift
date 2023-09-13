@@ -20,6 +20,7 @@ class CollectionViewTableViewCell: UITableViewCell {
     
     weak var delegate: CollectionViewTableViewCellDelegate?
     
+    private var titles: [Title] = [Title]()
     
     private let collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -50,12 +51,12 @@ class CollectionViewTableViewCell: UITableViewCell {
         collectionView.frame = contentView.bounds
     }
     
-//    public func  configure(with titles: [Title]) {
-//        self.titles = titles
-//        DispatchQueue.main.async { [weak self] in
-//            self?.collectionView.reloadData()
-//        }
-//    }
+    public func  configure(with titles: [Title]) {
+        self.titles = titles
+        DispatchQueue.main.async { [weak self] in
+            self?.collectionView.reloadData()
+        }
+    }
     
     private func downloadTitleAt(indexPath: IndexPath) {
 //

@@ -7,9 +7,12 @@
 
 import UIKit
 
-class SearchViewController: UIViewController {
-    private var topInsetView = UIView()
+class SearchViewController: UIViewController, SearchResultsViewControllerDelegate {
+   
     
+    private var titles: [Title] = [Title]()
+    
+    // MARK:
     private let textFields: UITextField = {
          let textField = UITextField()
          textField.text = "UIMb"
@@ -18,6 +21,7 @@ class SearchViewController: UIViewController {
         textField.font = .systemFont(ofSize: 30, weight: .bold)
          return textField
      }()
+    
     
     private let discoverTable: UITableView = {
         let table = UITableView()
@@ -38,25 +42,42 @@ class SearchViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = .systemBackground
         title = "Search"
-        topInsetView.backgroundColor = #colorLiteral(red: 1, green: 0.8280770183, blue: 0, alpha: 1)
-        view.addSubview(topInsetView)
         view.addSubview(textFields)
         
-        navigationItem.searchController = searchController
-        //searchController.searchResultsUpdater = self
+        navigationController?.navigationBar.prefersLargeTitles = true
+        navigationController?.navigationItem.largeTitleDisplayMode = .always
+        searchController.searchResultsUpdater = self
         
         view.addSubview(discoverTable)
         discoverTable.delegate = self
         discoverTable.dataSource = self
         
+        navigationItem.searchController = searchController
+        navigationController?.navigationBar.tintColor = .white
+        fetchDiscoverMovies()
+        
+        searchController.searchResultsUpdater = self
+    }
+    
+    private func fetchDiscoverMovies() {
+        
+        APICaller.shared.getDiscoverMovies { [ weak self ] result in
+            switch result {
+            case .success(let titles):
+                self?.titles = titles
+                DispatchQueue.main.async {
+                    self?.discoverTable.reloadData()
+                }
+            case .failure(let error):
+                print(error.localizedDescription)
+                           }
+        }
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         discoverTable.frame = view.bounds
-        topInsetView.frame = CGRect(x: 0, y: 0,
-                                    width: view.frame.width,
-                                    height: view.safeAreaInsets.top - 50)
+        
     }
     
 }
@@ -65,7 +86,7 @@ class SearchViewController: UIViewController {
 
 extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 40
+        return titles.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -81,8 +102,59 @@ extension SearchViewController: UITableViewDataSource, UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-   
+        
+        let title = titles[indexPath.row]
+        
+        guard let titleName = title.image ?? title.originalTitle else {
+            return
         }
-    
+        
+        APICaller.shared.getMovie(with: titleName) { [weak self] result in
+            switch result {
+            case .success(let videoElement):
+                DispatchQueue.main.async {
+                    let vc = TitlePreviewViewController()
+                    vc.configure(with: TitlePreviewViewModel(title: titleName, youtubeView: videoElement, titleOverview: title.releaseDate ?? "", titleYear: title.year ?? "", titleReleaseDate: title.releaseDate ?? ""))
+                    self?.navigationController?.pushViewController(vc, animated: true)
+                }
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
+    }
 }
 
+extension SearchViewController: UISearchResultsUpdating {
+    
+    func updateSearchResults(for searchController: UISearchController) {
+        let searchBar = searchController.searchBar
+        guard let query = searchBar.text,
+              !query.trimmingCharacters(in: .whitespaces).isEmpty,
+              query.trimmingCharacters(in: .whitespaces).count >= 3,
+              let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
+            return
+        }
+        resultsController.delegate = self
+        
+        APICaller.shared.search(with: query) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success(let titles):
+                    resultsController.titles = titles
+                    resultsController.searchResultsCollectionView.reloadData()
+                case .failure(let error):
+                    print(error.localizedDescription)
+                }
+            }
+        }
+    }
+    func searchResultsViewControllerDidTapItem(_ viewModel: TitlePreviewViewModel) {
+        DispatchQueue.main.async { [weak self] in
+            let vc = TitlePreviewViewController()
+            vc.configure(with: viewModel)
+            
+            self?.navigationController?.pushViewController(vc, animated: true)
+        }
+    }
+}

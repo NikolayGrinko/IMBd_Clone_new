@@ -10,23 +10,26 @@ import UIKit
 
 enum Sections: Int {
     
-    case TrendingMovies = 0
-    case TrendingTv = 1
-    case Popular = 2
-    case Uncoming = 3
-    case TopRated = 4
+    case Top250Movies = 0
+    case MostPopularMovies = 1
+    case ComingSoom = 2
+    case InTheaters = 3
+   
     
 }
 
 
 class HomeViewController: UIViewController {
-
+    
+    
+    private var randomTrendingMovie: Title?
     private var headerView: HeroHeaderUIView?
     
-    let sectionTitles: [String] = ["Trending Movies", "Trending Tv", "Popular", "Uncoming Movies", "Top Rated"]
+    let sectionTitles: [String] = ["Top 250 Movies", "Most Popular Movies", "Coming Soom", "In Theaters"]
     
     
     private let homeFeedTable: UITableView = {
+        
         let table = UITableView(frame: .zero, style: .grouped)
         table.register(CollectionViewTableViewCell.self, forCellReuseIdentifier: CollectionViewTableViewCell.identifier)
         return table
@@ -45,6 +48,26 @@ class HomeViewController: UIViewController {
         headerView = HeroHeaderUIView(frame: CGRect(x: 0, y: 0, width: view.bounds.width, height: 500))
         homeFeedTable.tableHeaderView = headerView
      
+        configureHeroHeaderView()
+        
+    }
+    
+    private func configureHeroHeaderView() {
+        
+        APICaller.shared.getTop250Movies { [weak self] result in
+            switch result {
+            case .success(let titles):
+                let selectedTitle = titles.randomElement()
+                
+                self?.randomTrendingMovie = selectedTitle
+                self?.headerView?.configure(with: TitleViewModel(titleName: selectedTitle?.originalTitle ?? "", posterURL: selectedTitle?.image ?? ""))
+                
+                print(result)
+                
+            case .failure(let error):
+                print(error.localizedDescription)
+            }
+        }
     }
     
     
@@ -53,13 +76,9 @@ class HomeViewController: UIViewController {
         image = image?.withRenderingMode(.alwaysOriginal)
         navigationItem.leftBarButtonItem = UIBarButtonItem(image: image, style: .done, target: self, action: nil)
        
-//        navigationItem.rightBarButtonItems = [
-//            UIBarButtonItem(image: UIImage(systemName: "person"), style: .done, target: self, action: nil),
-//            UIBarButtonItem(image: UIImage(systemName: "play.rectangle"), style: .done, target: self, action: nil)
-//        ]
-//        navigationController?.navigationBar.tintColor = .white
     }
     
+    // MARK: bounds home Feed Table - photo
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         homeFeedTable.frame = view.bounds
@@ -84,14 +103,73 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             return UITableViewCell()
         }
         
+        cell.delegate = self
+        
+        switch indexPath.section {
+            
+        case Sections.Top250Movies.rawValue:
+            
+            APICaller.shared.getTop250Movies { result in
+                switch result {
+                case .success(let titles):
+                  
+                    cell.configure(with: titles)
+                case .failure(let error):
+                     print(error)
+                    print(error.localizedDescription)
+                }
+            }
+            
+        case Sections.MostPopularMovies.rawValue:
+            
+            APICaller.shared.getMostPopularMovies { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    print(error)
+                }
+            }
+            
+        case Sections.ComingSoom.rawValue:
+            
+            APICaller.shared.getComingSoom { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    print(error)
+                }
+            }
+            
+            
+        case Sections.InTheaters.rawValue:
+            
+            APICaller.shared.getInTheaters { result in
+                switch result {
+                case .success(let titles):
+                    cell.configure(with: titles)
+                case .failure(let error):
+                    print(error.localizedDescription)
+                    print(error)
+                }
+            }
+            
+        default:
+            return UITableViewCell()
+        }
+        
         return cell
     }
     
-    
+    // MARK: height sections
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return 200
     }
     
+    // MARK: height between sections (между секциями)
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 40
     }
@@ -107,7 +185,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
             height: header.bounds.height)
         header.textLabel?.textColor = .white
         
-        header.textLabel?.text = header.textLabel?.text?.capitalizeFirstLetter()
+        header.textLabel?.text = header.textLabel?.text?.localizedCapitalized
     }
     
     //MARK: добавили секции с массива к каждому заголовку
@@ -123,7 +201,7 @@ extension HomeViewController: UITableViewDelegate, UITableViewDataSource {
     }
 }
 
-
+// MARK: transition to view movie characteristics
 extension HomeViewController: CollectionViewTableViewCellDelegate {
     
     func collectionViewTableViewCellDidTapCell(_ cell: CollectionViewTableViewCell, viewModel: TitlePreviewViewModel) {

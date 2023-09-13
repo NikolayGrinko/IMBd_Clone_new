@@ -5,6 +5,10 @@
 //  Created by Николай Гринько on 26.08.2023.
 //
 
+/*
+releaseDate
+
+ */
 
 import UIKit
 import WebKit
@@ -15,7 +19,7 @@ class TitlePreviewViewController: UIViewController {
         let label = UILabel()
         label.translatesAutoresizingMaskIntoConstraints = false
         label.font = .systemFont(ofSize: 22, weight: .bold)
-        label.text = "Harry potter"
+        label.text = " "
         return label
     }()
     
@@ -25,9 +29,26 @@ class TitlePreviewViewController: UIViewController {
         label.font = .systemFont(ofSize: 16, weight: .regular)
         label.translatesAutoresizingMaskIntoConstraints = false
         label.numberOfLines = 0
-        label.text = "This is the best movie ever to watch as a kids"
+        label.text = "This is the description of the movie"
         return label
     }()
+    
+    private let yearLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.text = " "
+        return label
+    }()
+    
+    private let releaseDateLabel: UILabel = {
+        let label = UILabel()
+        label.translatesAutoresizingMaskIntoConstraints = false
+        label.font = .systemFont(ofSize: 22, weight: .bold)
+        label.text = " "
+        return label
+    }()
+    
     
     private let downloadButton: UIButton = {
         let button = UIButton()
@@ -55,6 +76,8 @@ class TitlePreviewViewController: UIViewController {
         view.addSubview(webView)
         view.addSubview(titleLabel)
         view.addSubview(overviewLabel)
+        view.addSubview(yearLabel)
+        view.addSubview(releaseDateLabel)
         view.addSubview(downloadButton)
         
         configureConstraints()
@@ -83,11 +106,24 @@ class TitlePreviewViewController: UIViewController {
             
         ]
         
+        let yearLabelConstraints = [
+        
+            yearLabel.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor, constant: 20),
+            yearLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            
+        ]
+        
+        let releaseDateLabelConstraints = [
+        
+            releaseDateLabel.topAnchor.constraint(equalTo: yearLabel.bottomAnchor, constant: 20),
+            releaseDateLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 20)
+            
+        ]
         
         let downloadbuttonconstraints = [
         
             downloadButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
-            downloadButton.topAnchor.constraint(equalTo: overviewLabel.bottomAnchor, constant: 25),
+            downloadButton.topAnchor.constraint(equalTo: releaseDateLabel.bottomAnchor, constant: 25),
             downloadButton.widthAnchor.constraint(equalToConstant: 140),
             downloadButton.heightAnchor.constraint(equalToConstant: 40)
         ]
@@ -95,6 +131,8 @@ class TitlePreviewViewController: UIViewController {
         NSLayoutConstraint.activate(webViewConstraints)
         NSLayoutConstraint.activate(titleLabelConstraints)
         NSLayoutConstraint.activate(overviewLabelConstraints)
+        NSLayoutConstraint.activate(yearLabelConstraints)
+        NSLayoutConstraint.activate(releaseDateLabelConstraints)
         NSLayoutConstraint.activate(downloadbuttonconstraints)
     }
    
@@ -102,12 +140,14 @@ class TitlePreviewViewController: UIViewController {
         
         titleLabel.text = model.title
         overviewLabel.text = model.titleOverview
+        yearLabel.text = model.titleYear
+        releaseDateLabel.text = model.titleReleaseDate
         
-//        guard let url = URL(string: "https://www.youtube.com/embed/\(model.youtubeView.id.videoId)") else {
-//            return
-//        }
-//        webView.load(URLRequest(url: url))
+        guard let url = URL(string: "https://www.youtube.com/embed/\(model.youtubeView.id.videoId)") else {
+            return
+        }
+        webView.load(URLRequest(url: url))
         
     }
-
 }
+// https://imdb-api.com/API/YouTubeTrailer/k_ecmrr273/tt1375666
