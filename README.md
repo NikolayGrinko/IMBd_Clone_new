@@ -1,13 +1,13 @@
 # IMBd_Clone_new
-Запущенный онлайн в 1990 году и дочерняя компания Amazon.com с 1998 года, IMDb является самым популярным и авторитетным в мире источником контента для фильмов, телевидения и знаменитостей, предназначенным для того, чтобы помочь поклонникам исследовать мир фильмов и шоу и решить, что смотреть
+Launched online in 1990 and a subsidiary of Amazon.com since 1998, IMDb is the world's most popular and authoritative content for movies, television and celebrities, designed to help authorities police the world of movies and shows and decide what to watch.
 
-В данном приложении я разработал представление "КоллВью" с секциями по категориям.
-Еще есть возможность перейти на страницу поиска и загрузить нужный контент, потом перейти на страницу контента с описанием характеристик контента (название, обзор, дата релиза).
-И просмотреть непосредственно в ютубе.
-Но есть проблемы:
-- Подписку бесплатную отменили и с 1 августа код не действительный и загрузить контент не получится.
-Но идея может кому подойдет.
-Всем удачи.
+In this application, I developed a CollectionView view with sections by category.
+There is also the option to go to the page search and download the desired content, then go to the page content describing the characteristics of the content (title, review, release date).
+And watch directly on YouTube.
+But there are problems:
+- The free subscription was canceled and from August 1 the code is no longer valid and you will not be able to download content.
+But the idea may suit someone.
+Good luck to all.
 
 <img width="270" alt="1" src="https://github.com/NikolayGrinko/IMBd_Clone_new/assets/112849355/9acf0bb7-a912-49b2-add4-94c732c00490">
 
