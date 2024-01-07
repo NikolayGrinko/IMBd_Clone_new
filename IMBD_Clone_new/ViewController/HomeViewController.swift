@@ -15,7 +15,6 @@ enum Sections: Int {
     case ComingSoom = 2
     case InTheaters = 3
    
-    
 }
 
 

@@ -1,11 +1,11 @@
 {
   "images" : [
     {
+      "filename" : "logo2.jpeg",
       "idiom" : "universal",
       "scale" : "1x"
     },
     {
-      "filename" : "free-png.ru-681.png",
       "idiom" : "universal",
       "scale" : "2x"
     },
